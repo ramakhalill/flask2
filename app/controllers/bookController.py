@@ -59,14 +59,6 @@ def update_book(book_id, data):
 
 
 
-
-# WHY NOT   Book.query.delete(book_id)   ??
-
-
-
-
-
-
 def delete_book(book_id):
     book = Book.query.get(book_id)
     if not book:
@@ -105,7 +97,7 @@ def transfer_book(book_id, new_library_id):
 
     library = Library.query.get(new_library_id)
     if not library:
-        return None, "destination library not found"
+        return None, "library not found"
 
     book.library_id = new_library_id
     db.session.commit()
